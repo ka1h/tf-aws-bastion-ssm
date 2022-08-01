@@ -11,7 +11,7 @@ variable "instance_type" {
 }
 
 variable "storage_size" {
-  type        = integer
+  type        = number
   description = "The storage size of the root block device"
   default     = "8"
 }
