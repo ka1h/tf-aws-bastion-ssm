@@ -65,3 +65,8 @@ variable "tags" {
   description = "Tags to be added to the launch configuration for the bastion host, additionally to name tag"
   default     = []
 }
+
+variable "iam_policies" {
+  type    = list(string)
+  default = ["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore", "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"]
+}

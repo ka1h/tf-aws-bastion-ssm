@@ -21,7 +21,7 @@ resource "aws_iam_role" "this" {
 }
 
 resource "aws_iam_role_policy_attachment" "this" {
-  for_each   = toset(["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore", "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"])
+  for_each   = toset(var.iam_policies)
   role       = aws_iam_role.this.name
   policy_arn = each.key
 }
