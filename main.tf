@@ -57,9 +57,9 @@ resource "aws_security_group" "allow_egress" {
   }
 }
 
-# data "template_file" "init" {
-#   template = file("${path.module}/cloud_init.init")
-# }
+data "template_file" "init" {
+  template = file("${path.module}/cloud_init.init")
+}
 
 ## Creating Launch Configuration
 resource "aws_launch_configuration" "this" {
@@ -69,7 +69,7 @@ resource "aws_launch_configuration" "this" {
   associate_public_ip_address = false
   iam_instance_profile        = aws_iam_instance_profile.this.id
 
-  # user_data = data.template_file.init.rendered
+  user_data = data.template_file.init.rendered
 
   root_block_device {
     volume_size                 = var.storage_size
